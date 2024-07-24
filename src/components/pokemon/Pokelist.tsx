@@ -1,18 +1,21 @@
+import Pokecard from "./Pokecard";
+
 interface PokelistProps {
-  photo: string;
-  name: string;
-  type: string;
+  pokemons: {
+    name: string;
+    url: string;
+  }[];
 }
 
 function Pokelist(props: PokelistProps) {
-  const { photo, name, type } = props;
+  const { pokemons } = props;
 
   return (
-    <>
-      <img src={photo} alt="imagen pokemon" />
-      <p>{name}</p>
-      <p>{type}</p>
-    </>
+    <div>
+      {pokemons.map((pokemon) => {
+        return <Pokecard key={pokemon.name} pokeinfo={pokemon} />;
+      })}
+    </div>
   );
 }
 

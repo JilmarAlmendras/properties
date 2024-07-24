@@ -1,32 +1,26 @@
 import { useEffect, useState } from "react";
 import Pokelist from "./Pokelist";
 
-interface Pokemons {
-  photo: string;
+interface Pokemon {
   name: string;
   url: string;
 }
 
-// interface Buttons {
-//   previous: string;
-//   next: string;
-// }
-
 function Pokedex() {
-  const [pokemons, setPokemons] = useState<Pokemons[]>([]);
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [pokeurl] = useState("https://pokeapi.co/api/v2/pokemon");
 
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon")
+    fetch(pokeurl)
       .then((res) => res.json())
       .then((res) => {
-        // console.log(res.results);
         setPokemons(res.results);
       });
   }, []);
   return (
     <>
       <h1>Pokedex</h1>
-      {/* <Pokelist photo={} name={} type={} /> */}
+      <Pokelist pokemons={pokemons} />
       <button>previous</button>
       <button>next</button>
     </>
