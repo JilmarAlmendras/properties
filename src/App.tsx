@@ -1,10 +1,12 @@
 import "./App.css";
-import Pokedex from "./components/pokemon/Pokedex";
+import Dragondex from "./components/dragon-ball/Dragondex";
+// import Pokedex from "./components/pokemon/Pokedex";
 
 function App() {
   return (
     <>
-      <Pokedex />
+      {/* <Pokedex /> */}
+      <Dragondex />
     </>
   );
 }
